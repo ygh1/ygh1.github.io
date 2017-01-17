@@ -1,0 +1,179 @@
+body {
+}
+
+/*分数*/
+.scoreDiv {
+    height: 93px;
+    width: 186px;
+    background: url('../img/scoreBg.png') no-repeat;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 25px;
+
+}
+
+.scoreDiv > p {
+    margin-left: 120px;
+    margin-top: 30px;
+}
+
+/*分数变大动画*/
+@keyframes bigFont {
+    0% {
+        font-size: 25px;
+    }
+    50% {
+        font-size: 40px;
+    }
+    100% {
+        font-size: 25px;
+    }
+}
+
+/*倒计时*/
+.timeout {
+    height: 89px;
+    width: 180px;
+    background: url('../img/clock.png') no-repeat;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    color: white;
+    text-align: center;
+    line-height: 89px;
+    font-size: 25px;
+
+}
+
+.timeout > span:first-child {
+    margin-left: 75px;
+}
+
+/*游戏开始时候的背景*/
+.gameStartBg {
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+.gameStart > img:last-child {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+}
+
+/*游戏时候的背景*/
+#bgImg {
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+.btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+.btn > img:nth-child(2) {
+    position: absolute;
+    top: -30px;
+    /*left:50%;*/
+    z-index: -1;
+    transform: scale(0.9);
+    /*margin-left: 15px;*/
+}
+
+.btn > img:nth-child(3) {
+    position: absolute;
+    z-index: -2;
+    top: -390px;
+    width: 180px;
+}
+
+@keyframes bianDa {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.7);
+    }
+    90% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bianChang {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -340px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.rows {
+    position: absolute;
+    height: 400px;
+    width: 100%;
+}
+
+.rows > div {
+    position: absolute;
+    bottom: 0;
+    right: -280px;
+    z-index: -1;
+}
+
+/*牛被拖动的动画*/
+@keyframes down {
+    0% {
+        transform: translate(0, 0);
+    }
+    40% {
+        transform: translate(0, 120px) scale(1.2);
+    }
+    60% {
+        transform: translate(0, 100px) scale(1.1);
+    }
+    100% {
+        transform: translate(0, 240px) scale(1.25);
+    }
+}
+
+/*游戏结束的时候的计分分版*/
+.gameOverScore{
+    border-bottom:100px solid transparent;
+}
+.gameOverScore > img {
+    width: 100%;
+    max-width: 100%;
+    z-index: -1;
+}
+
+.gameOverScore > p {
+    margin-top: -80px;
+    text-align: center;
+    color:white;
+    font-size: 35px;
+
+}
+
+/*c重新开始游戏*/
+.againGame{
+    text-align: center;
+}

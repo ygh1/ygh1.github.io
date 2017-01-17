@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/initialize.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body scroll="no" style="overflow-x:hidden;overflow-y: hidden ">
+<div class="gameStart" id="gameStart" >
+    <img src="img/gameOverBg.png" alt="" class="gameStartBg" id="startBgImg">
+    <img src="img/startBtn.png" alt="" id="startBtn" >
+</div>
+<div class="game" id="gaming" style="display: none">
+    <!--得分背景-->
+    <div class="scoreDiv">
+        <p id="score">0</p>
+    </div>
+
+    <!--背景图片-->
+    <img src="img/gameBg.png" alt="" id="bgImg">
+
+    <!--计时器-->
+    <p class="timeout clearFix" id="row4P">
+        <span>29</span>
+        <span class="maohao">:</span>
+        <span>0</span>
+    </p>
+
+    <!--牛部分-->
+    <div class="rows" id="rows">
+        <div id="box1">
+            <img src="img/cow1.png" alt="">
+        </div>
+        <div id="box2">
+            <img src="img/cow1.png" alt="">
+        </div>
+        <div id="box3">
+            <img src="img/cow1.png" alt="">
+        </div>
+
+    </div>
+
+    <!--按钮和绳子部分-->
+    <div class="btn">
+        <img src="img/pushBtn.png" alt="" id="btn">
+        <img src="img/rope.png" alt="" id="rope">
+        <img src="img/ropeCow1.png" alt="" id="ropeCow">
+    </div>
+</div>
+<div class="gameEnd" style="display: none"   id="gameEnd" >
+    <!--结束时候的背景-->
+    <img src="img/gameOverBg.png" alt="" class="gameStartBg" id="endBgImg">
+    <!--结束时候的得分背景板-->
+    <div class="gameOverScore clearFix">
+        <img src="img/overScore.png" alt="">
+        <p id="gameOverScore"></p>
+    </div>
+    <!--重新开始游戏-->
+    <div class="againGame"><img src="img/trymore.png" alt="" id="endBtn"></div>
+</div>
+<script>
+    var gameStart = document.getElementById('gameStart');//game start时候的整体div
+    var gaming = document.getElementById('gaming');//game ing时候的整体div
+    var gameEnd = document.getElementById('gameEnd');//game over时候的整体div
+
+
+    var startBgImg = document.getElementById('startBgImg');//game start时候的背景
+    var bgImg = document.getElementById('bgImg');//game ing时候的背景
+    var endBgImg = document.getElementById('endBgImg');//game end时候的背景
+
+    var startBtn = document.getElementById('startBtn');//游戏开始时候的按钮
+    var btn = document.getElementById('btn');//游戏进行时候的按钮
+    var endBtn = document.getElementById('endBtn');//重来一次游戏进行时候的按钮
+
+    var rope = document.getElementById('rope');//绳子
+    var ropeCow = document.getElementById('ropeCow');//逮住牛的时候
+    var rows = document.getElementById('rows');
+    var score = document.getElementById('score');
+    var gameOverScore = document.getElementById('gameOverScore');
+
+
+
+    //背景图片的高的设置
+    var clientH = document.documentElement.clientHeight || document.body.clientHeight;
+    startBgImg.style.height = clientH + 'px';//游戏开始时候的背景的高度设置
+    bgImg.style.height = clientH + 'px';//游戏进行时候的背景的高度设置
+    endBgImg.style.height = clientH + 'px';//游戏结束时候的背景的高度设置
+
+    startBtn.onclick=function(){
+        startBtn.style.animation='bianDa 0.3s';
+        var startGameTimer=setTimeout(function(){
+            gameStart.style.display='none';
+            gaming.style.display='block';
+            //牛出现的位置的div高的设置
+            rows.style.bottom = parseInt(clientH * 0.334) + 'px';
+            rope.style.left=btn.offsetLeft+15+'px';
+            btn.onclick = function () {
+                var bool = 0;
+                //给按钮添加动画
+                btn.style.animation = 'bianDa 0.3s';
+                var timer3 = setTimeout(function () {
+                    btn.style.animation = 'none';//清除按钮动画
+                    clearTimeout(timer3);
+                }, 300);
+                //让绳子动起来
+                clearInterval(timer2);
+                timer2 = setInterval(function () {
+                    rope.style.top = rope.offsetTop - moveLength + 'px';
+                    if (rope.offsetTop <= -340) {
+                        moveLength = -4;
+                    }
+                    if (moveLength == -4 && rope.offsetTop >= -30) {
+                        rope.style.top = '-30px';
+                        clearInterval(timer2);
+                        moveLength = 3;
+                    }
+
+                    //当绳子能套住牛时候
+                    if (rope.offsetTop <= -320) {
+                        var qujian1 = btn.parentNode.offsetLeft + rope.offsetLeft;
+                        var qujian2 = qujian1 + 80;
+
+                        //套住了牛1
+                        if (box1.offsetLeft >= qujian1 && box1.offsetLeft <= qujian2) {
+                            bool++;//分数增加
+                            if (bool == 1) {
+                                score.innerHTML = score.innerHTML / 1 + 5;
+                                score.style.animation = 'bigFont 0.2s';
+                                var timerScore1 = setTimeout(function () {
+                                    score.style.animation = 'none';
+                                    clearTimeout(timerScore1);
+                                }, 200)
+                            }
+                            box1.style.opacity = '0';//让走路的牛不显示
+                            rope.style.opacity = '0';//让绳子不显示
+                            ropeCow.style.zIndex = '-1';//让套住牛的相应图片显示
+                            ropeCow.src = 'img/ropeCow1.png';//添加套住牛的相应图片
+                            ropeCow.style.animation = 'down 1s';//添加套住牛的动画
+
+                            setTimeout(function () {
+                                ropeCow.style.zIndex = '-2';
+                                ropeCow.style.animation = 'none';
+                                rope.style.opacity = '1';
+                            }, 900)
+                        } else if (box2.offsetLeft >= qujian1 && box2.offsetLeft <= qujian2) {
+                            bool++;//分数增加
+                            if (bool == 1) {
+                                score.innerHTML = score.innerHTML / 1 + 5;
+                                score.style.animation = 'bigFont 0.2s';
+                                var timerScore2 = setTimeout(function () {
+                                    score.style.animation = 'none';
+                                    clearTimeout(timerScore2);
+                                }, 200)
+                            }
+                            box2.style.opacity = '0';//让走路的牛不显示
+                            rope.style.opacity = '0';//让绳子不显示
+                            ropeCow.style.zIndex = '-1';//让套住牛的相应图片显示
+                            ropeCow.src = 'img/ropeCow2.png';//添加套住牛的相应图片
+                            ropeCow.style.animation = 'down 1s';//添加套住牛的动画
+
+                            setTimeout(function () {
+                                ropeCow.style.zIndex = '-2';
+                                ropeCow.style.animation = 'none';
+                                rope.style.opacity = '1';
+                            }, 900)
+                        }
+                    }
+                }, 1);
+            };
+            //按钮宽的设置 绳子出去
+            var moveLength = 4;
+            var timer2;
+            btn.parentNode.style.marginLeft = '-' + btn.offsetWidth / 2 + 'px';
+            //牛的动态设置
+            var box1 = document.getElementById('box1');
+            var box2 = document.getElementById('box2');
+            var box3 = document.getElementById('box3');
+            var count = 1;
+            //让牛走路的时候切换姿势 显得像是在走路
+            setInterval(function () {
+                if (count % 2 == 1) {
+                    box1.innerHTML = '<img src="img/cow1.png" alt="">';
+                    box2.innerHTML = '<img src="img/cow2.png" alt="">';
+                } else {
+                    box1.innerHTML = '<img src="img/cow1_2.png" alt="">';
+                    box2.innerHTML = '<img src="img/cow2_2.png" alt="">';
+                }
+                count++;
+            }, 100);
+            var biaojiLeft = box1.offsetLeft;
+            //牛1的offsetLeft减小 让其运动起来
+            setInterval(function () {
+                box1.style.left = box1.offsetLeft - 1 + 'px';
+                if (box1.offsetLeft <= -280) {
+                    box1.style.left = biaojiLeft + 100 + 'px';
+                    box1.style.opacity = '1';
+                }
+            }, 5);
+            //牛2的offsetLeft减小 让其运动起来
+            var count2 = 0;
+            setInterval(function () {
+                count++;
+                if (count >= 350) {
+                    box2.style.left = box2.offsetLeft - 1 + 'px';
+                    if (box2.offsetLeft <= -280) {
+                        box2.style.left = biaojiLeft + 110 + 'px';
+                        box2.style.opacity = '1';
+                    }
+                }
+            }, 5);
+
+            //    倒计时部分
+            var spans = document.getElementById('row4P').getElementsByTagName('span');
+            var num1 = 9, num2 = 29;//29
+            var timer1 = setInterval(function () {
+                spans[2].innerHTML = num1;
+                num1--;
+                if (num1 == -1) {
+                    num1 = 9;
+                    num2--;
+                    if (num2 < 10) {
+                        spans[0].innerHTML = '0' + num2;
+                    } else {
+                        spans[0].innerHTML = num2;
+                    }
+                    if (num2 == 0) {
+                        clearInterval(timer1);
+                        btn.onclick = 'null';
+                        gaming.style.display='none';
+                        gameEnd.style.display='block';
+                        gameOverScore.innerHTML=score.innerHTML;
+                        endBtn.onclick=function(){
+                            window.open(location.href,'_self')
+                        }
+                    }
+                }
+            }, 100);
+            clearTimeout(startGameTimer);
+        },290);
+
+    }
+</script>
+</body>
+</html>

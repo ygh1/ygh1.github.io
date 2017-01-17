@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="initialize.css"/>
+    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="icon/demo.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <link rel="stylesheet" href="icon/demo.html"/>
+    <link rel="stylesheet" href="icon2/demo.css">
+    <link rel="stylesheet" href="icon2/iconfont.css">
+    <link rel="stylesheet" href="icon2/demo.html"/>
+    <script src="weibojs.js"></script>
+</head>
+<body>
+<!--header--><!--header--><!--header--><!--header--><!--header--><!--header-->
+<header class="head clearFix">
+    <div><img src="WB_logo.png" alt=""/></div>
+    <div class="head-sousuo"><input type="text" placeholder="大家正在搜索：眼影叠加"/>
+        <i class="iconfont">&#xe651;</i></div>
+    <div class="head-daohang">
+        <div><i class="iconfont">&#xe64f;</i><span>首页</span></div>
+        <div><i class="iconfont">&#xe792;</i><span>视频</span></div>
+        <div><i class="iconfont">&#xe73d;</i><span>发现</span></div>
+        <div><i class="iconfont">&#xe618;</i><span>游戏</span></div>
+        <div><i class="iconfont">&#xe6c5;</i><span>洛洛爱上炒鸡蛋</span></div>
+    </div>
+    <div class="head-right clearFix">
+        <i class="iconfont">&#xe665;</i>
+        <i class="iconfont">&#xe62d;</i>
+        <i class="iconfont">&#xe649;</i>
+    </div>
+</header>
+<!--填充-->
+<div class="tianchong1"></div>
+
+<!--内容区--><!--内容区--><!--内容区--><!--内容区--><!--内容区--><!--内容区-->
+<div class="content clearFix">
+    <!-- 内容区左边部分-->
+    <div class="content-left">
+        <ul class="content-left-top">
+            <li>首页<i class="xiaohongdian"></i></li>
+            <li>我的收藏</li>
+            <li>我的赞</li>
+        </ul>
+        <ul class="content-left-center">
+            <li>
+                <i class="iconfont">&#xe66c;</i>
+                <span>热门微博</span>
+                <i class="xiaohongdian"></i>
+                <i class="iconfont content-left-i">&#xe62d;</i>
+            </li>
+        </ul>
+        <ul class="content-left-bottom">
+            <li><i class="iconfont ">&#xe644;</i>好友圈</li>
+            <li><i class="iconfont">&#xe6cd;</i>特别关注</li>
+            <li><i class="dabaidian"></i>dota</li>
+            <li><i class="dabaidian"></i>娱乐圈</li>
+            <li><i class="dabaidian"></i>美女</li>
+            <li><i class="dabaidian"></i>搞笑</li>
+            <li><i class="dabaidian"></i>名人明星</li>
+        </ul>
+        <ul class="content-left-kong" id="contentLeftKong">
+            <li id="yincangli1"><i class="dabaidian"></i>同学</li>
+            <li id="yincangli2"><i class="dabaidian"></i>同事</li>
+            <li id="yincangli3"><i class="iconfont">&#xe644;</i>群微博</li>
+            <li id="yincangli4"><i class="iconfont">&#xe6f0;</i>悄悄关注</li>
+            <input type="button" value="展开" id="zhankai" class="input1"/>
+            <input type="button" value="收起" id="shouqi" class="input2"/>
+        </ul>
+    </div>
+    <div class="content-left-jia"></div>
+
+    <!-- 内容区中间部分-->
+    <div class="content-center">
+        <!-- 留言板-->
+        <div class="liuyanban">
+            <div class="liuyanban-head">
+                <p>有什么新鲜事想告诉大家?</p>
+
+                <p><a href="" id="haikeshuru">太帅！"追梦空天"空军航空开放活动精彩进行时(视频)　热门微博</a></p>
+            </div>
+
+            <textarea rows="4" cols="70" id="txt" class="text" placeholder="如果添加图片：<img src='' alt=/>"></textarea>
+
+            <div class="liuyanban-foot clearFix">
+                <ul class="clearFix">
+                    <li><i class="iconfont" style="color:rgb(255, 130, 0);">&#xe6b3;</i><span>表情</span></li>
+                    <li><i class="iconfont " style="color:rgb(132, 192, 2)">&#xe604;</i><span>图片</span></li>
+                    <li><i class="iconfont">&#xe7a6;</i> <span>视频</span></li>
+                    <li><i class="iconfont" style="color:rgb(90, 140, 230);">&#xe62a;</i><span>话题</span></li>
+                    <li><i class="iconfont" style="color:rgb(255, 130, 0);">&#xe651;</i><span>头条文章</span></li>
+                    <li><i class="iconfont">&#xf0013;</i></li>
+                </ul>
+                <div class="clearFix">
+                    <p><span>公开</span><i class="iconfont">&#xe65e;</i></p>
+
+                    <p id="fabu">发布</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 填充-->
+        <div class="liuyanban-tianchong"></div>
+        <!-- 留言板内容输出区域-->
+        <div class="remenweibo">
+            <i class="iconfont" style="color:rgb(249, 88, 88);">&#xe66c;</i>
+            <span>精彩微博推荐</span>
+            <i class="iconfont">&#xe65e;</i>
+        </div>
+        <ul class="show" id="showUl">
+            <li class="clearFix">
+                <div class="clearFix">
+                    <div><img src="headImg/d.jpg" alt=""/></div>
+                    <div>
+                        <p>冷笑话精选</p>
+
+                        <p>今天17：20 来自 iphone6s</p>
+                    </div>
+                    <div id="sLiFdiv3"><i>+</i><span>关注</span></div>
+                    <div id="sLiFdiv4"><i class="iconfont">&#xe65e;</i></div>
+                </div>
+                <div>
+                    奥尼尔：我离死亡最近的一次，就是贝爷一边说“该死，怎么就是找不到吃的呢”，一边看着我。。。
+                    <br/>
+                    <img src="showimg/IMG_1800.JPG" alt=""/>
+                    <img src="showimg/IMG_1801.JPG" alt=""/>
+                    <img src="showimg/IMG_1802.JPG" alt=""/>
+                    <img src="showimg/IMG_1803.JPG" alt=""/>
+                    <img src="showimg/IMG_1804.JPG" alt=""/>
+                    <img src="showimg/IMG_1805.JPG" alt=""/>
+                    <img src="showimg/IMG_1806.JPG" alt=""/>
+                    <img src="showimg/IMG_1807.JPG" alt=""/>
+                    <img src="showimg/IMG_1808.JPG" alt=""/>
+                </div>
+                <div class="show-foot clearFix" id="sLiTdiv">
+                    <div><i class="iconfont">&#xe6c9;</i><span>收藏</span></div>
+                    <div><i class="iconfont">&#xe61b;</i><span>转发</span></div>
+                    <div><i class="iconfont">&#xe612;</i><span>评论</span></div>
+                    <div><i class="iconfont">&#xe616;</i><span>赞</span></div>
+                </div>
+            </li>
+            <li class="clearFix">
+                <div class="clearFix">
+                    <div><img src="headImg/l.jpg" alt=""/></div>
+                    <div>
+                        <p>逗自己笑</p>
+
+                        <p>今天15：20 来自 iphone6s</p>
+                    </div>
+                    <div><i>+</i><span>关注</span></div>
+                    <div><i class="iconfont">&#xe65e;</i></div>
+                </div>
+                <div>
+                    给你1000万，你愿意卖掉你的对象吗？ 卧槽，笑死我了。。。[笑cry]
+                    <br/>
+                    <img src="showimg/IMG_18000.JPG" alt=""/>
+                    <img src="showimg/IMG_1817.JPG" alt=""/>
+                    <img src="showimg/IMG_1811.JPG" alt=""/>
+                    <img src="showimg/IMG_1810.JPG" alt=""/>
+                    <img src="showimg/IMG_1812.JPG" alt=""/>
+                    <img src="showimg/IMG_1813.JPG" alt=""/>
+                    <img src="showimg/IMG_1814.JPG" alt=""/>
+                    <img src="showimg/IMG_1815.JPG" alt=""/>
+                    <img src="showimg/IMG_1816.JPG" alt=""/>
+                </div>
+                <div class="show-foot clearFix">
+                    <div><i class="iconfont">&#xe6c9;</i><span>收藏</span></div>
+                    <div><i class="iconfont">&#xe61b;</i><span>转发</span></div>
+                    <div><i class="iconfont">&#xe612;</i><span>评论</span></div>
+                    <div><i class="iconfont">&#xe616;</i><span>赞</span></div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="content-right">
+        <!-- 头像所在地-->
+        <div>
+            <div>
+                <div>
+                    <img src="headImg/Myhead.jpg" alt=""/>
+                </div>
+            </div>
+            <div>
+                <div class="clearFix">
+                    <p>洛洛爱上炒鸡蛋</p>
+
+                    <p><i class="iconfont" style="color:rgb(249, 196, 32);">&#xe602;</i></p>
+
+                    <p>Lv14</p>
+                </div>
+            </div>
+            <div class="clearFix">
+                <div>
+                    <p>108</p>
+
+                    <p>关注</p>
+                </div>
+                <div>
+                    <p>48</p>
+
+                    <p>粉丝</p>
+                </div>
+                <div>
+                    <p>106</p>
+
+                    <p>微博</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 微博电影想看榜-->
+        <div>
+            <div>微博电影想看榜</div>
+            <div>
+                <div class="clearFix">
+                    <div><img src="headImg/微博电影想看榜.jpg" alt=""/></div>
+                    <div class="daoyan">
+                        <p><i>1</i>从你的全世界路过</p>
+
+                        <p>导演：张一白</p>
+
+                        <p>主演：邓超 / 白百何 / 杨</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;93.4</p>
+                    </div>
+                </div>
+                <div><i>2</i>七月与安生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;93.4</div>
+                <div><i>3</i>九条命（2016）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;93.2</div>
+                <div>查看更多 <i>></i></div>
+            </div>
+        </div>
+
+        <!-- 热门话题-->
+        <ul class="content-right-ul">
+            <li><span>热门话题</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="iconfont">&#xe650;</i>&nbsp;&nbsp;<span>换一换</span>
+            </li>
+            <li><span>#微微一笑很倾城#</span><i>64.3亿</i></li>
+            <li><span>#钱多多不哭#</span><i>22万</i></li>
+            <li><span>#小鲜肉排行榜#</span><i>7548万</i></li>
+            <li><span>#开学季#</span><i>16.7亿</i></li>
+            <li><span>#约会博物馆#</span><i>4.8亿</i>></li>
+            <li><span>#今天我长这样#</span><i>9.4亿</i></li>
+            <li><span>#G20#</span><i>5.4亿</i></li>
+            <li><span>#史上最萌日记#</span><i>8万</i></li>
+        </ul>
+    </div>
+</div>
+
+<div id="show2222">
+    <div>
+        <span class="user">账号：</span><input type="text" class="shuru" value="18230238424"/>
+        <br/>
+        <span class="user">密码：</span><input type="password" class="shuru" id="keyss" placeholder="123456"/>
+
+        <input type="checkbox" />
+        <span id="xianshi1">&nbsp;&nbsp;账号10天免登</span>
+        <p class="yincangp1" id="yingcangp11">10天之内不用<br/>输入账号密码</p>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input type="checkbox" id="jizhumima"/>
+        <span id="xianshi2">&nbsp;&nbsp;记住密码</span>
+        <p class="yincangp2" id="yingcangp22">下次不用再<br/>输入密码</p>
+        <input type="button" value="登陆" class="denglu" id="denglulu"/>
+    </div>
+</div>
+</body>
+
+</html>
+
+
