@@ -1,0 +1,47 @@
+.shopping-header{
+    display: inline-block;
+    vertical-align: top;
+    padding: 6px 7px;
+    border-radius: 32px;
+    background-color: #d1e7d3;
+    margin: 15px 0 10px -107px;
+    position:relative;
+    left:50%;
+}
+.shopping-header>div{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 22px;
+    padding: 0 14px 0 32px;
+    border-radius: 22px;
+    font-size: 14px;
+    color: #fff;
+    background: #47b34f url(//static-o2o.360buyimg.com/daojia/new/images/minicart/loc2.png) 10px center no-repeat;
+    background-size: 15px 18px;
+}
+
+
+.shopping-middle {
+    padding: 100px 0 160px 0;
+    line-height: 20px;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+    background: url(//static-o2o.360buyimg.com/daojia/new/images/icon/unlogin.png) center top no-repeat;
+    background-size: 96px 96px;
+    margin-top:26.5%;
+
+}
+
+.shopping-middle > a {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 8px;
+    line-height: 35px;
+    color: #fff;
+    background-color: #47b34f;
+    font-size: 15px;
+    margin-top: 16px;
+    border-radius: 5px;
+}
+

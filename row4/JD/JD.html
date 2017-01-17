@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>homePage</title>
+    <link rel="stylesheet" href="css/initialize.css">
+    <link rel="stylesheet" href="js/Swiper-3.3.1/dist/css/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/classifyCss.css">
+    <link rel="stylesheet" href="css/logon.css">
+    <link rel="stylesheet" href="css/orderCss.css">
+    <link rel="stylesheet" href="css/shopping.css">
+    <script src="js/Swiper-3.3.1/dist/js/swiper.js"></script>
+    <style>
+        section {
+            display: none;
+        }
+
+        .current {
+            display: block;
+        }
+        .colorGreen{
+            color:#39ac69;
+        }
+    </style>
+</head>
+<body>
+
+<!--放每个功能页的大大的div-->
+
+<div huijia></div>
+<!--最后一行  导航栏-->
+<ul class="row-7 clearFix">
+    <li data-href="index">
+        <a></a>
+
+        <p><a class="colorGreen">首页</a></p>
+    </li>
+    <li data-href="classify">
+        <a></a>
+
+        <p><a>分类</a></p>
+    </li>
+    <li data-href="shopping">
+        <a></a>
+
+        <p><a>购物车</a></p>
+    </li>
+    <li data-href="order">
+        <a></a>
+
+        <p>
+            <a>订单</a>
+        </p>
+    </li>
+    <li data-href="logon">
+        <a></a>
+
+        <p><a>我的</a></p>
+    </li>
+</ul>
+</body>
+
+<script src="js/jquery-3.1.1.js"></script>
+<script>
+    //映射 html中 section标签
+    var router = {
+        index: 0
+    };
+    // 请求首页的html
+    $.ajax({
+        url: 'model/index.html',
+        success: function (d) {
+            //性能:
+            //先对游离状态的元素进行操作, 之后再加入 dom中
+            //减少操作dom的次数
+            $('<section>', {class: 'current'}).html(d).appendTo('[huijia]');
+        }
+    });
+
+    //请求不同部分的html  单页面 app
+    $(function () {
+        //console.log($('upup').length < 1);
+        /*
+         * parent()
+         * parent(选择器)
+         *  依照选择器的格式筛选父级元素,
+         *  如果没有对应的父元素 , 返回不是空null
+         *
+         *  如何判断 jquery选择器 选择无结果时,
+         *      可以通过判断 length属性
+         *
+         * 扩展
+         *   $.fn
+         *      扩展一个
+         *   $.fn.extend()
+         *      批量扩展jquery对象
+         *      $.fn.extend({
+         *          getNodeName: function(){},
+         *          ...
+         *          ...
+         *      })
+         *
+         * */
+        //在 jquery 扩展 获取元素节点的函数
+        $.fn.getNodeName = function () {
+            // 获取当前元素
+            // console.log(this);
+            return this[0].nodeName.toLowerCase();
+        };
+        // $.prototype.getNodeName = function(){}
+        //==============================================
+        //        $.each(arr, function (i,d) {
+        //
+        //        })
+        //        $('[data-href]').each(function(i, el){
+        //            $(el).click(function () {
+        //                alert(this.dataset.href);
+        //            });
+        //        });
+        $('.row-7').on('click', 'li', function (e) {
+            var oLi;
+            var el = $(e.target);
+            //console.log(el.parent().getNodeName());
+            //console.log(el.getNodeName());
+            //当前触发事件的元素是 li
+            if (e.target.nodeName.toLowerCase() == 'li') {
+                oLi = $(e.target);
+            } else if (el.parent().getNodeName() == 'li') {//父级是li
+                oLi = el.parent();
+            } else if (el.parent().parent().getNodeName() == 'li') {
+                oLi = el.parent().parent();
+            }
+
+//            $(oLi[0] p a).addClass('colorGreen');
+             /*
+             * 获取 li 中 data-href 的值
+             * 通过href值, 获取模板, 并加载到 [huijia] 中
+             * 同时删除之前的current类 加 current 类
+             *   $('section.current').removeClass('current')
+             *   新生成的元素.addClass('current')
+             * */
+            //判断router中是否有 对应属性的值, 如果有说明加载过此页面, 反之则没加载过
+            if (router[oLi[0].dataset.href] == undefined) {
+                // 当新加入一个页面时 同时给 router对象 也加上对应属性
+                //index() 返回当前序号
+                //router[oLi[0].dataset.href] = oLi.index();
+                router[oLi[0].dataset.href] = Object.keys(router).length;
+                //模板的地址
+                var modelUrl = 'model/' + oLi[0].dataset.href + '.html';
+                $.ajax({
+                    url: modelUrl,
+                    success: function (d) {
+                        $('section.current').removeClass('current');
+                        $('<section>', {class: 'current'}).html(d).appendTo('[huijia]');
+                    }
+                });
+            } else {
+                // 已经加载过页面, 重新显示对应页面
+                $('section.current').removeClass('current');
+                $('section').eq(router[oLi[0].dataset.href]).addClass('current');
+            }
+
+
+            //判断地址当中有#xxxx时 不加此段url
+            if (location.href.indexOf('#') < 0) {
+                history.replaceState(null, 'index', location.href + '#index');
+            }
+
+                var url4Replace =oLi[0].dataset.href;
+                //console.log(url4Replace);
+                //替换地址
+                //history.replaceState(null, url4Replace, location.href.split('#')[0] + '#' + url4Replace)
+                //alert(0)
+                history.pushState(null, url4Replace, location.href.split('#')[0] + '#' + url4Replace);
+                $('li[data-href]').val(url4Replace);
+
+//            console.log($('[data-href]').eq(router[oLi[0].dataset.href]).val())
+
+            //底部的导航栏颜色设置
+//            $('a[hreflang|="en"]').css('border','3px dotted green');
+//            console.log(oLi[0])[data-href]
+//            console.log( location.href.split('#')[1]);
+
+//            console.log(strrrr)
+//            console.log($('[data-href|='+strrrr+']'));
+//            console.log($('[data-href]')[1].dataset.href);
+//            刚开始首页变成绿色的
+            var strrrr=location.href.split('#')[1];
+            var num=-250;//小图标icon的起始值
+            for(var i=0;i<5;i++){
+                if($('[data-href]')[i].dataset.href==strrrr){
+                    $('[data-href]>a').eq(i).css('background-position','center'+' '+(num+250)+'px');
+                    $('[data-href]>p>a').eq(i).addClass('colorGreen');
+                }else{
+                    $('[data-href]>a').eq(i).css('background-position','center'+' '+num+'px');
+                    $('[data-href]>p>a').eq(i).removeClass('colorGreen');
+                }
+                num+=-50;
+            }
+
+            onpopstate = function () {
+                //alert('切换历史记录');
+                var data = location.href.split('#')[1];
+                $('section.current').removeClass('current');
+                $('section').eq(router[data]).addClass('current');
+                var num=-250;
+                for(var i=0;i<5;i++){
+                    if($('[data-href]')[i].dataset.href==data){
+                        $('[data-href]>a').eq(i).css('background-position','center'+' '+(num+250)+'px');
+                        $('[data-href]>p>a').eq(i).addClass('colorGreen');
+                    }else{
+                        $('[data-href]>a').eq(i).css('background-position','center'+' '+num+'px');
+                        $('[data-href]>p>a').eq(i).removeClass('colorGreen');
+                    }
+                    num+=-50;
+                }
+            }
+        })
+    });
+</script>
+</html>

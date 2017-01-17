@@ -1,0 +1,125 @@
+.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 45px;
+    color: #555;
+    font-size: 17px;
+    text-align: center;
+    line-height: 44px;
+    background-color: #fff;
+}
+
+.header-in {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    right: 8px;
+    background: #fff;
+    border-radius: 2px;
+    border: 1px solid #e6e6e6;
+    height: 28px;
+    padding: 0 5px 0 20px;
+}
+
+.header .header-in input {
+    padding: 0 0 6px 17px;
+    vertical-align: top;
+    outline: none;
+    background: transparent;
+    border: none;
+    font-family: "microsoft yahei", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    height: 28px;
+    width: 100%;
+}
+
+.header .header-in i {
+    background: url('../img/icon/icon-7.png') -8px -8px no-repeat;
+    background-size: 44px auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+}
+
+.ul1 {
+    position: fixed;
+    left: 0;
+    top: 45px;
+    bottom: 50px;
+    width: 90px;
+    overflow: auto;
+    background-color: #f8f8f8;
+    list-style: none;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.ul1 li {
+    height: 43px;
+    padding-left: 14px;
+    line-height: 44px;
+    font-size: 14px;
+    color: #666666;
+    white-space: nowrap;
+    border-bottom: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    background-color: #f8f8f8;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}
+
+.ul1 .bianhua {
+    padding-left: 11px;
+    color: #47b34f;
+    background-color: #FFF;
+    border-left: 3px solid #47b34f;
+    border-right-color: #FFF;
+}
+
+.content {
+    position: absolute;
+    padding-top: 9px;
+    left: 90px;
+    top: 45px;
+    text-align: left;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.content ul li > div:first-child {
+    height: 19px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    margin-left: 6.5%;
+    line-height: 19px;
+    font-size: 13px;
+    color: #666666;
+}
+
+.content ul li > div:nth-child(2) > div {
+    text-align: center;
+    float: left;
+    width: 33%;
+    background-color: #fff;
+}
+
+.content ul li > div:nth-child(2) > div img {
+    height: 62px;
+    width: 62px;
+}
+
+.content ul li > div:nth-child(2) > div p {
+
+    font-size: 12px;
+    color: #7d7d7d;
+    padding: 8px 0;
+}
+.content ul li:last-child{
+    margin-bottom:50px;
+}
+
