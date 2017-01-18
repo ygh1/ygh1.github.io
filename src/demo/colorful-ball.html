@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		canvas{
+			background:#000;
+			display:block;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script src="../underscore-min.js"></script>
+	<script>
+		var canvas = document.getElementById('canvas');
+		elastic();//宽高设置
+		window.onresize = function(){
+			elastic();//宽高设置
+		}
+		var ctx = canvas.getContext('2d');
+		function Ball(x,y,r,color){
+			this.x = x;
+			this.y = y;
+			this.r = r;
+			this.color = color;
+			this.X = Math.random()*10-5;
+			this.Y = Math.random()*10-5;
+			this.R = Math.random() + 0.3;
+			ballArray.push(this);
+		}
+		Ball.prototype = {
+			update: function(){
+				this.x += this.X;
+				this.y += this.Y;
+				this.r -= this.R;
+				if(this.r<=0){
+					ballArray = _.without(ballArray,this);
+				}
+			},
+			render: function(){
+				ctx.fillStyle = this.color;
+				ctx.beginPath();
+				ctx.arc(this.x,this.y,this.r,0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fill();
+			}
+		}
+		function randomColor(){
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var color = 'rgb('+r+','+g+','+b+')';
+			return color;
+		}
+		function elastic(){
+			var w = document.documentElement.clientWidth||document.body.clientWidth;
+			var h = document.documentElement.clientHeight||document.body.clientHeight;
+			canvas.width = w;
+			canvas.height = h;
+		}
+		var ballArray = new Array();
+		setInterval(function(){
+			ctx.clearRect(0,0,canvas.width,canvas.height)
+			for(var i=0;i<ballArray.length;i++){
+				ballArray[i].update();
+				if(ballArray[i]){
+					ballArray[i].render();
+				}
+			}
+		},20)
+		canvas.addEventListener('mousemove',function(event){
+			var color = randomColor();
+			new Ball(event.offsetX,event.offsetY,20,color)
+		})
+	</script>
+</body>
+</html>
