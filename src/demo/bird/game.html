@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		canvas{
+			box-sizing: border-box;
+			display:block;
+			background:skyblue;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="320" height="600"></canvas>
+
+	<script src="js/Game.js"></script>
+	<script src="js/FrameUtil.js"></script>
+	<script src="js/staticResourceUtil.js"></script>
+	<script src="js/Background.js"></script>
+	<script src="js/Bird.js"></script>
+	<script src="js/Pipe.js"></script>
+	<script src="js/ScoreManager.js"></script>
+	<script>
+		let game = new Game({
+			'id': 'canvas',
+			'fps': 70
+		});
+		document.getElementById('canvas').width = document.documentElement.clientWidth;
+		document.getElementById('canvas').height = document.documentElement.clientHeight;
+	</script>
+
+</body>
+</html>
