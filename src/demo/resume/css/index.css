@@ -1,0 +1,77 @@
+/*音乐播放按钮*/
+.music-rotate{
+	width: .2rem;
+	height: .2rem;
+	cursor: pointer;
+	position:absolute;
+	right:.2rem;
+	top:.2rem;
+	z-index: 100;
+}
+.music-rotate .icon-iconfontbiaozhunmoban01{
+	font-size:.2rem;
+	color: #000;
+}
+.music-rotate:hover {
+	opacity: .8;
+}
+/*下页*/
+.next-page{
+	position: absolute;
+	bottom: .2rem;
+	left: 50%;
+	width: .2rem;
+	margin-left:-.1rem;
+	z-index: 100;
+	text-align:center;
+	animation: mySlideUp 2s infinite;
+}
+@keyframes mySlideUp {
+	0% {
+		opacity: 1;
+		bottom:.2rem;
+	}
+	100%{
+		opacity: 0;
+		bottom:.4rem;
+	}
+}
+/**/
+html,body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	font-size: 16px;
+}
+/*主体*/
+.swiper-container{
+	width: 100%;
+	height: 100%;
+}
+.swiper-container .slider1{
+	background:#e88a63;
+}
+.swiper-container .slider2{
+	background:#5cc2f1;
+}
+.swiper-container .slider3{
+	background:#9993c1;
+}
+.cartoon{
+	width: 80%;
+	height: 30%;
+	position:relative;
+	margin:0 auto;
+	background-image: url('../img/github-1.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:contain;
+	margin-top:.5rem;
+}
+.slide-text{
+	color: #fff;
+	text-align: center;
+	margin-top:50px;
+	font-size:24px;
+}
